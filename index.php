@@ -9,8 +9,24 @@ if (count($_GET) == 0) {
     <!--[if lte IE 8]><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css"><![endif]-->
     <!--[if gt IE 8]><!--><link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"><!--<![endif]-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:200">
-  </head><body>
-  <form class="pure-form pure-form-stacked" action="" method="get">
+    <script language="javascript" type="text/javascript">
+      function submitFunc() {
+	loopRemove("text",6);
+   	document.theform.action = "";
+        document.theform.submit();
+      }
+
+      function loopRemove(startName,count) {
+        for(var i=1;i<=count;i++) {
+	  if(document.getElementById(startName+i).value=="") {
+	    var t = document.getElementById(startName+i);
+	    t.parentNode.removeChild(t);
+          }
+	}  
+      }
+    </script>
+  </head><body onload="document.theform.reset();">
+  <form class="pure-form pure-form-stacked" name="theform" method="get">
     <fieldset>
         <legend>Events Filter</legend>
         <div class="pure-g">
@@ -39,7 +55,7 @@ if (count($_GET) == 0) {
                 <input name="nextDays" id="nextDays" class="pure-u-23-24" type="text" value="1">
             </div>
         </div>
-        <button type="submit" class="pure-button pure-button-primary">Submit</button>
+        <button type="submit" onClick="submitFunc();" class="pure-button pure-button-primary">Submit</button>
     </fieldset>
   </form>
 </body></html>
