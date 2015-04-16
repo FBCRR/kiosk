@@ -1,0 +1,4 @@
+<?php
+  //Your API Key for UServices
+  $key="12345-67890-QWERTY-ASDFG";
+?>
