@@ -2,6 +2,7 @@
 require_once "config.php";
 // API Call Example: http://api.serviceu.com/rest/events/occurrences?orgkey={3decaac4-0d4b-45e2-9845-ed62823f3161}&nextDays=1&format=xml&callback=?
 if (count($_GET) == 0) {
+  //Right now we just have the occurrences api, but we could add the others all wrapped up into one, or modularize it into a different file per call.
   echo <<< EOF
 <html>
   <head>
