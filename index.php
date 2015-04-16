@@ -46,7 +46,7 @@ if (count($_GET) == 0) {
 </body></html>
 EOF;
 } else {
-  echo strlen($_GET['debug']) > 0 ?: '<?xml version="1.0" encoding="ISO8859-1" ?><?xml-stylesheet type="text/xsl" href="events.xsl"?>';
+  echo ( strlen($_GET['debug']) > 0 ) ?: '<?xml version="1.0" encoding="ISO8859-1" ?><?xml-stylesheet type="text/xsl" href="events.xsl"?>';
   header('Content-type: application/xml');
   //Get the XML
   $url = "http://api.serviceu.com/rest/events/occurrences?orgkey={" . $key . "}";
