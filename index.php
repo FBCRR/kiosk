@@ -46,7 +46,7 @@ if (count($_GET) == 0) {
 </body></html>
 EOF;
 } else {
-  if (strlen($_GET['debug']) == 0) {
+  if (! strlen($_GET['debug']) > 0) {
     echo '<?xml version="1.0" encoding="ISO8859-1" ?><?xml-stylesheet type="text/xsl" href="events.xsl"?>';
   }
   header('Content-type: application/xml');
