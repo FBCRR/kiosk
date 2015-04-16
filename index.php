@@ -46,7 +46,7 @@ if (count($_GET) == 0) {
 </body></html>
 EOF;
 } else {
-  echo '<?xml version="1.0" encoding="ISO8859-1" ?><?xml-stylesheet type="text/xsl" href="events.xsl"?>';
+  strlen($_GET['debug']) > 0 ?: echo '<?xml version="1.0" encoding="ISO8859-1" ?><?xml-stylesheet type="text/xsl" href="events.xsl"?>';
   header('Content-type: application/xml');
   //Get the XML
   $url = "http://api.serviceu.com/rest/events/occurrences?orgkey={" . $key . "}";
@@ -57,7 +57,7 @@ EOF;
   $url = strlen($_GET['departmentIds']) > 0 ? $url = $url . "&departmentIds=" . $_GET['departmentIds'] : $url;
   $url = strlen($_GET['nextDays']) > 0 ? $url = $url . "&nextDays=" . $_GET['nextDays'] : $url;
   $url = $url . "&format=xml&callback=?";
-echo "<!-- " . $url . " -->";
+  echo '<xsl:value-of  select="current-dateTime()"/>';
   echo file_get_contents($url);
 }
 ?>
