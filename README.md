@@ -1,2 +1,2 @@
 # kiosk
-Files used on the kiosk system
+Files used on the kiosk system.
