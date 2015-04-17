@@ -16,7 +16,7 @@
       <xsl:for-each select="Occurrences/Occurrence">
       <tr>
         <td><xsl:value-of select="Name"/></td>
-        <td><xsl:value-of select="OccurrenceStartTime"/></td>
+	<td><xsl:value-of select="OccurrenceStartTime"/>:</td>
         <td><xsl:value-of select="OccurrenceEndTime"/></td>
         <!-- <td><xsl:element name="a"><xsl:attribute name="href"><xsl:value-of select="ContactEmail"/></xsl:attribute><xsl:value-of select="ContactName"/>@<xsl:value-of select="ContactPhone"/></xsl:element></td> -->
       </tr>
