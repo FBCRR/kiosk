@@ -48,16 +48,16 @@ EOF;
 } else {
   if (! strlen($_GET['debug']) > 0) {
     echo '<?xml version="1.0" encoding="ISO8859-1" ?><?xml-stylesheet type="text/xsl" href="events.xsl"?>';
-  }
-  header('Content-type: application/xml');
+    header('Content-type: application/xml');
+    }
   //Get the XML
   $url = "http://api.serviceu.com/rest/events/occurrences?orgkey={" . $key . "}";
-  $url = strlen($_GET['startDate']) > 0 ? $url = $url . "&startDate=" . $_GET['startDate'] : $url;
-  $url = strlen($_GET['endDate']) > 0 ? $url = $url . "&endDate=" . $_GET['endDate'] : $url;
-  $url = strlen($_GET['eventName']) > 0 ? $url = $url . "&eventName=" . $_GET['eventName'] : $url;
-  $url = strlen($_GET['categoryIds']) > 0 ? $url = $url . "&categoryIds=" . $_GET['categoryIds'] : $url;
-  $url = strlen($_GET['departmentIds']) > 0 ? $url = $url . "&departmentIds=" . $_GET['departmentIds'] : $url;
-  $url = strlen($_GET['nextDays']) > 0 ? $url = $url . "&nextDays=" . $_GET['nextDays'] : $url;
+  $url = (isset($_GET['startDate']) AND strlen($_GET['startDate'])) > 0 ? $url = $url . "&startDate=" . $_GET['startDate'] : $url;
+  $url = (isset($_GET['endDate']) AND strlen($_GET['endDate'])) > 0 ? $url = $url . "&endDate=" . $_GET['endDate'] : $url;
+  $url = (isset($_GET['eventName']) AND strlen($_GET['eventName'])) > 0 ? $url = $url . "&eventName=" . $_GET['eventName'] : $url;
+  $url = (isset($_GET['categoryIds']) AND strlen($_GET['categoryIds'])) > 0 ? $url = $url . "&categoryIds=" . $_GET['categoryIds'] : $url;
+  $url = (isset($_GET['departmentIds']) AND strlen($_GET['departmentIds'])) > 0 ? $url = $url . "&departmentIds=" . $_GET['departmentIds'] : $url;
+  $url = (isset($_GET['nextDays']) AND strlen($_GET['nextDays'])) > 0 ? $url = $url . "&nextDays=" . $_GET['nextDays'] : $url;
   $url = $url . "&format=xml&callback=?";
   echo '<xsl:value-of  select="current-dateTime()"/>';
   echo file_get_contents($url);
