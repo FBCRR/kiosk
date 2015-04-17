@@ -1,6 +1,6 @@
 <?php 
 require_once "config.php";
-// API Call Example: http://api.serviceu.com/rest/events/occurrences?orgkey={3decaac4-0d4b-45e2-9845-ed62823f3161}&nextDays=1&format=xml&callback=?
+// API Call Example: http://api.serviceu.com/rest/events/occurrences?orgkey={3decaac4-0d4b-45e2-9845-ed62823f3161}&nextDays=1&format=xml
 if (count($_GET) == 0) {
   //Right now we just have the occurrences api, but we could add the others all wrapped up into one, or modularize it into a different file per call.
   echo <<< EOF
@@ -46,9 +46,7 @@ if (count($_GET) == 0) {
 </body></html>
 EOF;
 } else {
-  if (! strlen($_GET['debug']) > 0) {
     echo '<?xml version="1.0" encoding="ISO8859-1" ?><?xml-stylesheet type="text/xsl" href="events.xsl"?>';
-  }
   header('Content-type: application/xml');
   //Get the XML
   $url = "http://api.serviceu.com/rest/events/occurrences?orgkey={" . $key . "}";
@@ -58,7 +56,7 @@ EOF;
   $url = (isset($_GET['categoryIds']) AND strlen($_GET['categoryIds'])) > 0 ? $url = $url . "&categoryIds=" . $_GET['categoryIds'] : $url;
   $url = (isset($_GET['departmentIds']) AND strlen($_GET['departmentIds'])) > 0 ? $url = $url . "&departmentIds=" . $_GET['departmentIds'] : $url;
   $url = (isset($_GET['nextDays']) AND strlen($_GET['nextDays'])) > 0 ? $url = $url . "&nextDays=" . $_GET['nextDays'] : $url;
-  $url = $url . "&format=xml&callback=?";
+  $url = $url . "&format=xml";
   echo '<xsl:value-of  select="current-dateTime()"/>';
   echo file_get_contents($url);
 }
